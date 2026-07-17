@@ -1,0 +1,13 @@
+{
+  "name": "Prestige Outlet",
+  "short_name": "Prestige",
+  "description": "Intimo, pigiameria, biancheria per la casa e costumi delle migliori marche a Campobello di Licata.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f4",
+  "theme_color": "#1d3f8f",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
