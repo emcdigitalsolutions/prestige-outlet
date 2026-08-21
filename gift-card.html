@@ -473,7 +473,7 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:64px 0 30px}
 </a>
 
 <div class="cookie-banner" id="cookieBanner">
-  <p>Usiamo solo cookie tecnici necessari al funzionamento del sito. Dettagli nella <a href="privacy.html">Privacy &amp; Cookie Policy</a>.</p>
+  <p>Usiamo cookie tecnici necessari al funzionamento del sito. Con il tuo consenso attiviamo i cookie statistici (Google Analytics). Dettagli nella <a href="privacy.html">Privacy &amp; Cookie Policy</a>.</p>
   <div class="cookie-actions">
     <button class="ck-nec" data-cookie="necessary">Solo necessari</button>
     <button class="ck-all" data-cookie="all">Accetta</button>
@@ -496,7 +496,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 // cookie consent (nessun embed di terze parti su questa pagina: banner solo per coerenza)
 const CK='prestigeoutlet-cookie-consent';
 const cookieBanner=document.getElementById('cookieBanner');
-function chooseCookie(v){ try{ localStorage.setItem(CK,v); }catch(e){} cookieBanner.classList.remove('show'); }
+function chooseCookie(v){ try{ localStorage.setItem(CK,v); }catch(e){} cookieBanner.classList.remove('show'); if(v==='all' && typeof gtag==='function'){ gtag('consent','update',{'analytics_storage':'granted'}); } }
 (function(){ let s=null; try{ s=localStorage.getItem(CK); }catch(e){} if(!s){ cookieBanner.classList.add('show'); } })();
 document.querySelectorAll('[data-cookie]').forEach(b=>b.addEventListener('click',()=>chooseCookie(b.dataset.cookie)));
 
