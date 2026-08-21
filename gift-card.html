@@ -151,7 +151,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(251,249,244,.82);backdro
 .gc-panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:32px;box-shadow:var(--shadow)}
 .gc-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700;margin:4px 0 14px}
 .gc-label.mt{margin-top:28px}
-.amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.amount-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.amount-hint{margin-top:14px;font-size:13.5px;color:var(--muted);text-align:center}
 .amount-btn{padding:16px 8px;border:1.5px solid var(--line);border-radius:12px;background:var(--cream);font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--blue-deep);cursor:pointer;transition:all .25s}
 .amount-btn:hover{border-color:var(--blue-soft)}
 .amount-btn.active{border-color:var(--blue);background:var(--blue);color:#fff;box-shadow:0 10px 24px -12px rgba(29,63,143,.6)}
@@ -243,7 +244,8 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:64px 0 30px}
 @media(max-width:560px){
   .wrap{padding:0 20px}
   .sec{padding:56px 0}
-  .amount-grid{grid-template-columns:repeat(2,1fr)}
+  .amount-grid{grid-template-columns:repeat(3,1fr)}
+  .amount-btn{padding:14px 6px;font-size:18px}
   .gc-panel{padding:24px}
 }
 </style>
@@ -299,7 +301,7 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:64px 0 30px}
         <div class="num">1</div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <h3>Scegli l'importo</h3>
-        <p>Da 10 a 500 €: decidi tu quanto regalare, con i tagli pronti o un importo personalizzato.</p>
+        <p>Scegli il taglio che preferisci: 25, 50, 75, 100 o 200 €. Per un regalo più importante, acquista più Gift Card.</p>
       </div>
       <div class="step reveal">
         <div class="num">2</div>
@@ -355,14 +357,9 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:64px 0 30px}
           <button type="button" class="amount-btn active" data-amount="50">€ 50</button>
           <button type="button" class="amount-btn" data-amount="75">€ 75</button>
           <button type="button" class="amount-btn" data-amount="100">€ 100</button>
+          <button type="button" class="amount-btn" data-amount="200">€ 200</button>
         </div>
-        <div class="custom-amount">
-          <label for="customAmount">Oppure un importo personalizzato (10–500 €)</label>
-          <div class="input-euro">
-            <span class="pfx">€</span>
-            <input type="number" id="customAmount" min="10" max="500" step="5" placeholder="Es. 150" inputmode="numeric">
-          </div>
-        </div>
+        <p class="amount-hint">Vuoi regalare di più? Puoi acquistare più Gift Card. 🎁</p>
 
         <div class="gc-label mt">Personalizza l'anteprima <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted)">(facoltativo)</span></div>
         <div class="field"><label for="recipientName">Nome di chi riceverà il buono</label><input type="text" id="recipientName" placeholder="Es. Maria" autocomplete="off"></div>
@@ -503,19 +500,17 @@ document.querySelectorAll('[data-cookie]').forEach(b=>b.addEventListener('click'
 // ============================================================
 // GIFT CARD — Stripe Payment Links (nessun backend)
 // ------------------------------------------------------------
-// Sostituire i placeholder con i Payment Link REALI creati nella
-// dashboard Stripe di Prestige Outlet. Consigliato configurare su
-// ciascun link i "custom fields" (Nome/Email destinatario, Messaggio)
-// e l'opzione "Dopo il pagamento → reindirizza a"
-//   https://www.prestigeoutletcampobello.it/gift-card.html?paid=1
-// Il link "custom" usa un prezzo "il cliente sceglie l'importo".
+// Payment Link Stripe di Prestige Outlet (tagli fissi 25/50/75/100/200 €).
+// Finché un URL resta "PLACEHOLDER" la guardia in fondo apre WhatsApp.
+// Ogni link ha i custom fields (Nome/Email destinatario, Messaggio) e il
+// redirect "Dopo il pagamento" → gift-card.html?paid=1.
 // ============================================================
 const PAYMENT_LINKS = {
-  25:     'https://buy.stripe.com/PLACEHOLDER_25',
-  50:     'https://buy.stripe.com/PLACEHOLDER_50',
-  75:     'https://buy.stripe.com/PLACEHOLDER_75',
-  100:    'https://buy.stripe.com/PLACEHOLDER_100',
-  custom: 'https://buy.stripe.com/PLACEHOLDER_CUSTOM'
+  25:  'https://buy.stripe.com/00w4gz8Bybp1dKS4gMe7m01',
+  50:  'https://buy.stripe.com/cNiaEX4li50D5em4gMe7m00',
+  75:  'https://buy.stripe.com/7sY8wPbNK8cP6iq3cIe7m02',
+  100: 'https://buy.stripe.com/cNifZhcRO78L5em5kQe7m03',
+  200: 'https://buy.stripe.com/fZu00jcRO64H6iqbJee7m04'
 };
 const WA_FALLBACK = "https://wa.me/393356807712?text=";
 
@@ -529,7 +524,6 @@ const submitBtn=document.getElementById('submitBtn');
 const formError=document.getElementById('formError');
 
 const amountBtns=document.querySelectorAll('.amount-btn');
-const customAmount=document.getElementById('customAmount');
 const previewAmount=document.getElementById('previewAmount');
 const summaryAmount=document.getElementById('summaryAmount');
 const summaryTotal=document.getElementById('summaryTotal');
@@ -568,15 +562,8 @@ function updateAmount(a){
 amountBtns.forEach(btn=>btn.addEventListener('click',()=>{
   amountBtns.forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  customAmount.value='';
   updateAmount(parseInt(btn.dataset.amount,10));
 }));
-
-customAmount.addEventListener('input',function(){
-  const v=parseInt(this.value,10);
-  amountBtns.forEach(b=>b.classList.remove('active'));
-  if(v>=10 && v<=500){ updateAmount(v); }
-});
 
 recipientName.addEventListener('input',function(){
   previewRecipient.textContent = this.value.trim() ? 'Per: '+this.value.trim() : 'Per: chi vuoi tu';
@@ -599,12 +586,11 @@ form.addEventListener('submit',function(e){
   e.preventDefault();
   formError.style.display='none';
 
-  if(!(selectedAmount>=10 && selectedAmount<=500)){
-    showError("Scegli un importo tra 10 e 500 €.");
+  const link = PAYMENT_LINKS[selectedAmount];
+  if(!link){
+    showError("Seleziona uno dei tagli disponibili.");
     return;
   }
-
-  const link = PAYMENT_LINKS[selectedAmount] || PAYMENT_LINKS.custom;
 
   // Guardia: link non ancora configurato → fallback WhatsApp, così la pagina è utile fin da subito
   if(!link || link.indexOf('PLACEHOLDER')!==-1){
