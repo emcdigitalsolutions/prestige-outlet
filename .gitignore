@@ -8,3 +8,9 @@ preview-*.png
 node_modules/
 _*.png
 _*.js
+# Documenti personali / sensibili — MAI committare (repo pubblico)
+documento-*.png
+documento-*.jpg
+documento-*.pdf
+*-documento*.*
+info.txt
