@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, follow">
+<!-- Google Analytics 4 (GA4) con Google Consent Mode v2 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9VMETG1RK8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var _gaConsent='denied';
+  try{ if(localStorage.getItem('prestigeoutlet-cookie-consent')==='all') _gaConsent='granted'; }catch(e){}
+  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':_gaConsent,'wait_for_update':500});
+  gtag('js', new Date());
+  gtag('config','G-9VMETG1RK8',{'anonymize_ip':true});
+</script>
 <title>Privacy & Cookie Policy — Prestige Outlet</title>
 <link rel="canonical" href="https://www.prestigeoutletcampobello.it/privacy.html">
 <meta name="theme-color" content="#1d3f8f">
@@ -106,6 +117,7 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:34px 0}
       <table class="tbl">
         <tr><th>Finalità</th><th>Base giuridica</th></tr>
         <tr><td>Rispondere alle richieste inviate tramite il modulo di contatto</td><td>Misure precontrattuali su richiesta dell'interessato (art. 6.1.b) e legittimo interesse (art. 6.1.f)</td></tr>
+        <tr><td>Statistiche di navigazione in forma aggregata (Google Analytics)</td><td>Consenso dell'interessato (art. 6.1.a)</td></tr>
         <tr><td>Caricamento della mappa Google Maps (cookie di terze parti)</td><td>Consenso dell'interessato (art. 6.1.a)</td></tr>
       </table>
     </div>
@@ -120,7 +132,7 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:34px 0}
       <p>I dati possono essere trattati, per nostro conto, dai seguenti soggetti in qualità di responsabili o fornitori di servizi:</p>
       <ul>
         <li><strong>EMC Digital Solutions</strong> — gestione tecnica del sito e dei servizi di comunicazione (responsabile del trattamento);</li>
-        <li><strong>Google Ireland Ltd.</strong> — invio dei messaggi del modulo (Google Apps Script) e visualizzazione mappa (Google Maps);</li>
+        <li><strong>Google Ireland Ltd.</strong> — invio dei messaggi del modulo (Google Apps Script), statistiche di navigazione (Google Analytics 4) e visualizzazione mappa (Google Maps);</li>
         <li><strong>GitHub, Inc.</strong> — hosting del sito.</li>
       </ul>
       <p>Alcuni fornitori potrebbero trattare i dati al di fuori dell'Unione Europea: in tali casi il trasferimento avviene nel rispetto delle garanzie previste dal GDPR (Clausole Contrattuali Standard e/o Data Privacy Framework).</p>
@@ -136,9 +148,11 @@ footer{background:var(--blue-deep);color:#cfd8ee;padding:34px 0}
       <h2><span class="n">07</span> Cookie Policy</h2>
       <h3>Cookie tecnici e necessari</h3>
       <p>Il sito utilizza esclusivamente cookie e tecnologie tecniche necessarie al corretto funzionamento (ad esempio il salvataggio in <em>localStorage</em> della tua scelta sui cookie). Per questi non è richiesto il consenso.</p>
+      <h3>Cookie statistici — Google Analytics 4</h3>
+      <p>Il sito utilizza <strong>Google Analytics 4</strong> (Google Ireland Ltd.) per raccogliere in forma aggregata e anonima informazioni statistiche sull'utilizzo del sito (pagine visitate, provenienza, dispositivo). Adottiamo la modalità <em>Google Consent Mode v2</em> con anonimizzazione dell'indirizzo IP: <strong>questi cookie vengono attivati solo dopo il tuo consenso</strong> tramite il banner ("Accetta"). Se scegli "Solo necessari" nessun cookie statistico viene installato. Puoi disattivare Google Analytics anche installando il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">componente aggiuntivo del browser</a> fornito da Google.</p>
       <h3>Cookie di terze parti — Google Maps</h3>
       <p>La mappa è fornita da Google Maps, che può installare cookie di terze parti. Per rispettare la tua privacy, <strong>la mappa non viene caricata finché non presti il consenso</strong> tramite il banner o il pulsante "Mostra la mappa". Puoi revocare il consenso cancellando i dati del sito dal tuo browser.</p>
-      <div class="box">Il sito <strong>non utilizza cookie analitici, di profilazione o di marketing</strong>.</div>
+      <div class="box">Il sito <strong>non utilizza cookie di profilazione pubblicitaria o di marketing</strong>. I cookie statistici sono attivati solo previo consenso.</div>
       <h3>Gestione dei cookie</h3>
       <p>Puoi gestire o eliminare i cookie in ogni momento dalle impostazioni del tuo browser. La disattivazione di alcuni cookie potrebbe limitare alcune funzionalità (ad esempio la visualizzazione della mappa).</p>
     </div>

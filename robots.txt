@@ -25,5 +25,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-# TODO dominio: sostituire con il dominio Aruba reale
 Sitemap: https://www.prestigeoutletcampobello.it/sitemap.xml
