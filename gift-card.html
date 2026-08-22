@@ -129,7 +129,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(251,249,244,.82);backdro
 
 /* preview card */
 .gc-preview{position:sticky;top:104px}
-.gc-card{position:relative;aspect-ratio:1.586/1;border-radius:22px;padding:30px 30px 26px;color:#fff;overflow:hidden;box-shadow:0 40px 70px -30px rgba(20,44,102,.7);background:
+.gc-card{position:relative;display:flex;flex-direction:column;min-height:232px;border-radius:22px;padding:30px 30px 26px;color:#fff;overflow:hidden;box-shadow:0 40px 70px -30px rgba(20,44,102,.7);background:
   linear-gradient(150deg,var(--blue) 0%,var(--blue-deep) 78%);}
 .gc-card::before{content:"";position:absolute;inset:0;background:
   radial-gradient(300px 200px at 88% 0%, rgba(216,192,138,.28), transparent 60%),
@@ -143,7 +143,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(251,249,244,.82);backdro
 .gc-card .amount{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;margin-top:2px;color:#fff}
 .gc-card .rows{margin-top:16px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:rgba(255,255,255,.9)}
 .gc-card .msg{margin-top:10px;font-style:italic;font-size:13px;color:var(--gold-soft);min-height:1.2em;line-height:1.4}
-.gc-card .foot{position:absolute;left:30px;right:30px;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;font-size:10.5px;letter-spacing:.06em;color:rgba(255,255,255,.6)}
+.gc-card .foot{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:10.5px;letter-spacing:.06em;color:rgba(255,255,255,.6)}
 .gc-card .chip{width:34px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--gold-soft),var(--gold));opacity:.9}
 .gc-preview .hint{margin-top:18px;font-size:13px;color:var(--muted);text-align:center;line-height:1.6}
 
